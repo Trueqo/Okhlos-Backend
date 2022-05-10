@@ -20,6 +20,7 @@ try {
     console.log(`Database failed on:${error}`);
 }
 
+  
 app.get('/', (req, res)=>{
     res.send('Connect')
 })
