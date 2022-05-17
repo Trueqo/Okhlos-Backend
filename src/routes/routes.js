@@ -10,8 +10,13 @@ import { createSessions, deleteSessions, getOneSessions, getSessions, updateSess
 import { createStudent, deleteStudent, getOneStudent, getStudent, updateStudent, getAllStudents, searchStudent, getMaxCohort, getStudentsAvailable } from "../controllers/StudentController.js";
 import { createStudies, deleteStudies, getOneStudies, getStudies, updateStudies } from "../controllers/StudiesController.js";
 import { createUsers, deleteUsers, getOneUsers, getUsers, updateUsers } from "../controllers/UsersController.js";
-import { checkLogin } from "../controllers/LoginController.js";
+import { authController, checkLogin } from "../controllers/LoginController.js";
 import { getMatch, getMatchCohort, updateMatch, calculateMatch, updateMatchAutomatic, createMatch } from "../controllers/MatchController.js";
+
+
+//middelwares
+import { isAuth } from "../middelwares/auth.js";
+
 
 const router = express.Router();
 
@@ -47,7 +52,7 @@ router.post('/sessions', createSessions)
 router.put('/sessions/:id', updateSessions)
 router.delete('/sessions/:id', deleteSessions)
 
-router.get('/all-students', getAllStudents)
+router.get('/all-students',isAuth, getAllStudents)
 router.get('/students', getStudent)
 router.get('/search-students/:name', searchStudent)
 router.get('/student/:id', getOneStudent)
@@ -81,7 +86,7 @@ router.post('/programs', createPrograms)
 router.put('/programs/:id', updatePrograms)
 router.delete('/programs/:id', deletePrograms)
 
-router.get('/studies', getStudies)
+router.get('/studies',authController, getStudies)
 router.get('/studies/:id', getOneStudies)
 router.post('/studies', createStudies)
 router.put('/studies/:id', updateStudies)
