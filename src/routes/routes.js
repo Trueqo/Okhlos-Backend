@@ -1,5 +1,5 @@
 import express from "express";
-import { createActualRole, deleteActualRole, getActualRole, getOneActualRole, updateActualRole } from "../controllers/ActualRoleController.js";
+// import { createActualRole, deleteActualRole, getActualRole, getOneActualRole, updateActualRole } from "../controllers/ActualRoleController.js";
 import { createAdmin, deleteAdmin, getAdmin, getOneAdmin, updateAdmin } from "../controllers/AdminController.js";
 import { createBusiness, deleteBusiness, getBusiness, getOneBusiness, updateBusiness } from "../controllers/BusinessController.js";
 import { createInterests, deleteInterests, getInterests, getOneInterests, updateInterests } from "../controllers/InterestsController.js";
@@ -57,11 +57,11 @@ router.put('/student/:id', updateStudent)
 router.delete('/student/:id', deleteStudent)
 router.get('/students/available', getStudentsAvailable)
 
-router.get('/actual-role', getActualRole)
-router.get('/actual-role/:id', getOneActualRole)
-router.post('/actual-role', createActualRole)
-router.put('/actual-role/:id', updateActualRole)
-router.delete('/actual-role/:id', deleteActualRole)
+// router.get('/actual-role', getActualRole)
+// router.get('/actual-role/:id', getOneActualRole)
+// router.post('/actual-role', createActualRole)
+// router.put('/actual-role/:id', updateActualRole)
+// router.delete('/actual-role/:id', deleteActualRole)
 
 router.get('/business', getBusiness)
 router.get('/business/:id', getOneBusiness)

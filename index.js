@@ -1,9 +1,14 @@
-import express from "express";
+import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import db from './src/db/db.js';
+import apiRoutes from './src/routes/routes.js';
 
-import db from "./src/db/db.js";
-import apiRoutes from "./src/routes/routes.js";
+// const express = require('express');
+// const cors = require('cors');
+// const dotenv = require('dotenv');
+// const db = require("./src/db/db.js");
+// const apiRoutes = require('./src/routes/routes.js');
 
 dotenv.config()
 const app = express();
@@ -20,7 +25,6 @@ try {
     console.log(`Database failed on:${error}`);
 }
 
-  
 app.get('/', (req, res)=>{
     res.send('Connect')
 })
