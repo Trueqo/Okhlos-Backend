@@ -1,5 +1,5 @@
 import express from "express";
-// import { createActualRole, deleteActualRole, getActualRole, getOneActualRole, updateActualRole } from "../controllers/ActualRoleController.js";
+import { createActualRole, deleteActualRole, getActualRole, getOneActualRole, updateActualRole } from "../controllers/ActualRoleController.js";
 import { createAdmin, deleteAdmin, getAdmin, getOneAdmin, updateAdmin } from "../controllers/AdminController.js";
 import { createBusiness, deleteBusiness, getBusiness, getOneBusiness, updateBusiness } from "../controllers/BusinessController.js";
 import { createInterests, deleteInterests, getInterests, getOneInterests, updateInterests } from "../controllers/InterestsController.js";
@@ -24,13 +24,14 @@ router.put('/match/update/:id_student/:id_mentor', updateMatch)
 router.put('/match/confirm', updateMatchAutomatic)
 router.post('/match/create', createMatch)
 
-router.get('/admin', getAdmin)
-router.get('/admin/:id', getOneAdmin)
-router.post('/admin', createAdmin)
-router.put('/admin/:id', updateAdmin)
-router.delete('/admin/:id', deleteAdmin)
+router.get('/admin', getAdmin) //funciona
+router.get('/admin/:id', getOneAdmin) //funciona
+router.post('/admin', createAdmin)  // funciona
+router.put('/admin/:id', updateAdmin) //funciona
+router.delete('/admin/:id', deleteAdmin) //funciona
 
-router.get('/all-mentors', getAllMentors)
+//revisar
+router.get('/all-mentors', getAllMentors) //funciona
 router.get('/mentors', getMentor)
 router.get('/mentor/:id', getOneMentor)
 router.post('/mentor', createMentor)
@@ -39,14 +40,14 @@ router.delete('/mentor/:id', deleteMentor)
 router.delete('/admin/:id', deleteMentor)
 router.get('/mentors/available', getMentorsAvailable)
 
+router.get('/all-sessions', getAllSessions) //funciona
+router.get('/sessions', getSessions) //funciona
+router.get('/sessions/:id', getOneSessions) //funciona
+router.post('/sessions', createSessions) //funciona
+router.put('/sessions/:id', updateSessions) //funciona
+router.delete('/sessions/:id', deleteSessions) //funciona
 
-router.get('/all-sessions', getAllSessions)
-router.get('/sessions', getSessions)
-router.get('/sessions/:id', getOneSessions)
-router.post('/sessions', createSessions)
-router.put('/sessions/:id', updateSessions)
-router.delete('/sessions/:id', deleteSessions)
-
+//revisar
 router.get('/all-students', getAllStudents)
 router.get('/students', getStudent)
 router.get('/search-students/:name', searchStudent)
@@ -57,41 +58,41 @@ router.put('/student/:id', updateStudent)
 router.delete('/student/:id', deleteStudent)
 router.get('/students/available', getStudentsAvailable)
 
-// router.get('/actual-role', getActualRole)
-// router.get('/actual-role/:id', getOneActualRole)
-// router.post('/actual-role', createActualRole)
-// router.put('/actual-role/:id', updateActualRole)
-// router.delete('/actual-role/:id', deleteActualRole)
+router.get('/cargo', getActualRole) //funciona
+router.get('/cargo/:id', getOneActualRole) //funciona
+router.post('/cargo', createActualRole) //funciona
+router.put('/cargo/:id', updateActualRole) //funciona
+router.delete('/cargo/:id', deleteActualRole) //funciona
 
-router.get('/business', getBusiness)
-router.get('/business/:id', getOneBusiness)
-router.post('/business', createBusiness)
-router.put('/business/:id', updateBusiness)
-router.delete('/business/:id', deleteBusiness)
+router.get('/business', getBusiness) //funciona
+router.get('/business/:id', getOneBusiness) //funciona
+router.post('/business', createBusiness) // funciona
+router.put('/business/:id', updateBusiness) // funciona
+router.delete('/business/:id', deleteBusiness) //funciona
 
-router.get('/interests', getInterests)
-router.get('/interests/:id', getOneInterests)
-router.post('/interests', createInterests)
-router.put('/interests/:id', updateInterests)
-router.delete('/interests/:id', deleteInterests)
+router.get('/interests', getInterests) //funciona
+router.get('/interests/:id', getOneInterests) //funciona
+router.post('/interests', createInterests) //funciona
+router.put('/interests/:id', updateInterests) //funciona
+router.delete('/interests/:id', deleteInterests) //funciona
 
-router.get('/programs', getPrograms)
-router.get('/programs/:id', getOnePrograms)
-router.post('/programs', createPrograms)
-router.put('/programs/:id', updatePrograms)
-router.delete('/programs/:id', deletePrograms)
+router.get('/programs', getPrograms) //funciona
+router.get('/programs/:id', getOnePrograms) //funciona
+router.post('/programs', createPrograms) //funciona
+router.put('/programs/:id', updatePrograms) //funciona
+router.delete('/programs/:id', deletePrograms) //funciona
 
-router.get('/studies', getStudies)
-router.get('/studies/:id', getOneStudies)
-router.post('/studies', createStudies)
-router.put('/studies/:id', updateStudies)
-router.delete('/studies/:id', deleteStudies)
+router.get('/studies', getStudies) //funciona
+router.get('/studies/:id', getOneStudies) //funciona
+router.post('/studies', createStudies) //funciona
+router.put('/studies/:id', updateStudies) //funciona
+router.delete('/studies/:id', deleteStudies) //funciona
 
-router.get('/users', getUsers)
-router.get('/users/:id', getOneUsers)
-router.post('/users', createUsers)
-router.put('/users/:id', updateUsers)
-router.delete('/users/:id', deleteUsers)
+router.get('/users', getUsers) //funciona
+router.get('/users/:id', getOneUsers) //funciona
+router.post('/users', createUsers) //funciona
+router.put('/users/:id', updateUsers) //funciona
+router.delete('/users/:id', deleteUsers) //funciona
 
 
 export default router
