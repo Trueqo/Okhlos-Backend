@@ -9,18 +9,20 @@ import { createPrograms, deletePrograms, getOnePrograms, getPrograms, updateProg
 import { createSessions, deleteSessions, getOneSessions, getSessions, updateSessions, getAllSessions } from "../controllers/SessionsController.js";
 import { createStudent, deleteStudent, getOneStudent, getStudent, updateStudent, getAllStudents, searchStudent, getMaxCohort, getStudentsAvailable } from "../controllers/StudentController.js";
 import { createStudies, deleteStudies, getOneStudies, getStudies, updateStudies } from "../controllers/StudiesController.js";
-import { createUsers, deleteUsers, getOneUsers, getUsers, updateUsers } from "../controllers/UsersController.js";
+import { createUsers, deleteUsers, getOneUsers, getUsers, register, updateUsers } from "../controllers/UsersController.js";
 import { authController, checkLogin } from "../controllers/LoginController.js";
 import { getMatch, getMatchCohort, updateMatch, calculateMatch, updateMatchAutomatic, createMatch } from "../controllers/MatchController.js";
 
 
 //middelwares
 import { isAuth } from "../middelwares/auth.js";
+import { loginP } from "../controllers/PruebaLogin.js";
 
 
 const router = express.Router();
 
 router.get('/login/:email/:password', checkLogin)
+router.post('/login2', loginP)
 
 router.get('/match/calculate/:id_student', calculateMatch)
 router.get('/match/:cohort/:program', getMatchCohort)
@@ -95,6 +97,8 @@ router.delete('/studies/:id', deleteStudies)
 router.get('/users', getUsers)
 router.get('/users/:id', getOneUsers)
 router.post('/users', createUsers)
+// prueba
+router.post('/userss', register)
 router.put('/users/:id', updateUsers)
 router.delete('/users/:id', deleteUsers)
 
