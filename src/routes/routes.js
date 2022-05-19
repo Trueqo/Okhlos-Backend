@@ -33,7 +33,7 @@ router.delete('/admin/:id', deleteAdmin) //funciona
 //revisar
 router.get('/all-mentors', getAllMentors) //funciona
 router.get('/mentors', getMentor)
-router.get('/mentor/:id', getOneMentor)
+router.get('/mentor/:id', getOneMentor) //
 router.post('/mentor', createMentor)
 router.put('/mentor/:id', updateMentor)
 router.delete('/mentor/:id', deleteMentor)
@@ -48,10 +48,10 @@ router.put('/sessions/:id', updateSessions) //funciona
 router.delete('/sessions/:id', deleteSessions) //funciona
 
 //revisar
-router.get('/all-students', getAllStudents)
+router.get('/all-students', getAllStudents) //funciona
 router.get('/students', getStudent)
 router.get('/search-students/:name', searchStudent)
-router.get('/student/:id', getOneStudent)
+router.get('/student/:id', getOneStudent) //funciona
 router.get('/students/max-cohort', getMaxCohort)
 router.post('/student', createStudent)
 router.put('/student/:id', updateStudent)

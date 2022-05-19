@@ -10,7 +10,7 @@ export const getStudent = async (req, res) => {
 				students.gender, students.phone, users.email, interests.name as interest, programs.name as program,
 				mentors.name as mentor, students.active
 			FROM 
-				students, 
+				Estudiantes, 
 				students_interests,
 				interests, 
 				programs, 
