@@ -10,14 +10,21 @@ import { createPrograms, deletePrograms, getOnePrograms, getPrograms, updateProg
 import { createSessions, deleteSessions, getOneSessions, getSessions, updateSessions, getAllSessions } from "../controllers/SessionsController.js";
 import { createStudent, deleteStudent, getOneStudent, getStudent, updateStudent, getAllStudents, searchStudent, getMaxCohort, getStudentsAvailable } from "../controllers/StudentController.js";
 import { createStudies, deleteStudies, getOneStudies, getStudies, updateStudies } from "../controllers/StudiesController.js";
-import { createUsers, deleteUsers, getOneUsers, getUsers, updateUsers } from "../controllers/UsersController.js";
-import { checkLogin } from "../controllers/LoginController.js";
+import { createUsers, deleteUsers, getOneUsers, getUsers, register, updateUsers } from "../controllers/UsersController.js";
+import { authController, checkLogin } from "../controllers/LoginController.js";
+//import { getMatch, getMatchCohort, updateMatch, updateMatchAutomatic, createMatch } from "../controllers/MatchController.js";
 import { createUserStudent, deleteAllUserStudent, getUserStudent } from "../controllers/userStudentsController.js";
-// import { getMatch, getMatchCohort, updateMatch, calculateMatch, updateMatchAutomatic, createMatch } from "../controllers/MatchController.js";
+
+
+//middelwares
+import { isAuth } from "../middelwares/auth.js";
+import { loginP } from "../controllers/PruebaLogin.js";
+
 
 const router = express.Router();
 
 router.get('/login/:email/:password', checkLogin)
+router.post('/login2', loginP)
 
 // router.get('/match/calculate/:id_student', calculateMatch)
 // router.get('/match/:cohort/:program', getMatchCohort)
@@ -50,6 +57,14 @@ router.delete('/sessions/:id', deleteSessions) //funciona
 
 //revisar
 router.get('/all-students', getAllStudents) //funciona
+router.get('/all-sessions', getAllSessions)
+router.get('/sessions', getSessions)
+router.get('/sessions/:id', getOneSessions)
+router.post('/sessions', createSessions)
+router.put('/sessions/:id', updateSessions)
+router.delete('/sessions/:id', deleteSessions)
+
+//router.get('/all-students',isAuth, getAllStudents)
 router.get('/students', getStudent)
 router.get('/search-students/:name', searchStudent)
 router.get('/student/:id', getOneStudent) //funciona
