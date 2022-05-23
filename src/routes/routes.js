@@ -8,11 +8,11 @@ import { createMentor, deleteMentor, getMentor, getOneMentor, updateMentor, getA
 
 import { createPrograms, deletePrograms, getOnePrograms, getPrograms, updatePrograms } from "../controllers/ProgramsController.js";
 import { createSessions, deleteSessions, getOneSessions, getSessions, updateSessions, getAllSessions } from "../controllers/SessionsController.js";
-import { createStudent, deleteStudent, getOneStudent, getStudent, updateStudent, getAllStudents, searchStudent, getMaxCohort, getStudentsAvailable } from "../controllers/StudentController.js";
+import { createStudent, deleteStudent, getOneStudent, getStudent, updateStudent, getAllStudents, searchStudent, getMaxCohort, getStudentsAvailable,studentOff } from "../controllers/StudentController.js";
 import { createStudies, deleteStudies, getOneStudies, getStudies, updateStudies } from "../controllers/StudiesController.js";
 import { createUsers, deleteUsers, getOneUsers, getUsers, register, updateUsers } from "../controllers/UsersController.js";
 import { authController, checkLogin } from "../controllers/LoginController.js";
-import { getMatch, getMatchCohort, updateMatch, calculateMatch, updateMatchAutomatic, createMatch } from "../controllers/MatchController.js";
+// import { getMatch, getMatchCohort, updateMatch, calculateMatch, updateMatchAutomatic, createMatch } from "../controllers/MatchController.js";
 import { createUserStudent, deleteAllUserStudent, getUserStudent } from "../controllers/userStudentsController.js";
 
 //middelwares
@@ -64,8 +64,9 @@ router.get('/student/:id', getOneStudent) //funciona
 router.get('/students/max-cohort', getMaxCohort)
 router.post('/student', createStudent)
 router.put('/student/:id', updateStudent)
+router.put('/studentOff/:id', studentOff )
 router.delete('/student/:id', deleteStudent)
-router.get('/students/available', getStudentsAvailable)
+router.get('/students/available', getStudentsAvailable)//funciona
 
 router.get('/cargo', getActualRole) //funciona
 router.get('/cargo/:id', getOneActualRole) //funciona

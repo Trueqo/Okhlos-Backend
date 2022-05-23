@@ -2,7 +2,7 @@ import db from "../db/db.js";
 
 import { DataTypes } from "sequelize";
 
-const StudentModel = db.define('Estudiantes', {
+const StudentModel = db.define('estudiantes', {
     name: { type: DataTypes.STRING },
     email: { type: DataTypes.STRING },
     cohort: { type: DataTypes.INTEGER },
