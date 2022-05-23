@@ -2,8 +2,8 @@ import db from "../db/db.js";
 
 import { DataTypes } from "sequelize";
 
-const ActualRoleModel = db.define('actual_roles', {
+const CargoModel = db.define('Cargo', {
     name: { type: DataTypes.STRING }
 })
 
-export default ActualRoleModel;
+export default CargoModel;
