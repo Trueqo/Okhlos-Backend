@@ -49,10 +49,6 @@ export const register = async (req, res) => {
             'role': role
         }
 
-        // db.query(`INSERT INTO users VALUES('${email}','${password}','${role}')`,(error, results)=>{
-        //         //     if(error){console.log(error)}
-
-        // })
         await UsersModel.create(data)
         res.json({
             "message": "¡Registro creado correctamente!"

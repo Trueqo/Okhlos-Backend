@@ -4,7 +4,7 @@ import moment from "moment";
 
 export function isAuth(req, res, next) {
     if (!req.headers.authorization) {
-        return res.status(403).send({ message: 'Abrace hpt' })
+        return res.status(403).send({ message: 'Ingreso no permitido, logeate primero' })
     }
     const token = req.headers.authorization.split(' ')[1]
     const payload = jsonwebtoken.decode(token, process.env.JWT_SECRET)

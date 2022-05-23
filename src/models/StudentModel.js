@@ -4,12 +4,14 @@ import { DataTypes } from "sequelize";
 
 const StudentModel = db.define('students', {
     name: { type: DataTypes.STRING },
-    last_name: { type: DataTypes.STRING },
-    birth_date: { type: DataTypes.DATE },
+    email: { type: DataTypes.STRING },
     cohort: { type: DataTypes.INTEGER },
-    phone: { type: DataTypes.INTEGER },
-    active: { type: DataTypes.INTEGER },
-    gender: { type: DataTypes.INTEGER }
+    age: { type: DataTypes.INTEGER },
+    phone: { type: DataTypes.BIGINT },
+    status: { type: DataTypes.INTEGER },
+    gender: { type: DataTypes.STRING },
+    
+    
 })
 
 export default StudentModel;

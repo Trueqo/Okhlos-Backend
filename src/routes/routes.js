@@ -21,7 +21,9 @@ import { loginP } from "../controllers/PruebaLogin.js";
 
 const router = express.Router();
 
+//########## Login sin JWT y datos por el headers ###########
 router.get('/login/:email/:password', checkLogin)
+//########## Login con JWT y datos por el body ###########
 router.post('/login2', loginP)
 
 router.get('/match/calculate/:id_student', calculateMatch)
@@ -54,7 +56,13 @@ router.post('/sessions', createSessions)
 router.put('/sessions/:id', updateSessions)
 router.delete('/sessions/:id', deleteSessions)
 
-router.get('/all-students',isAuth, getAllStudents)
+//################# Sin el middelwares ##########
+
+router.get('/all-students', getAllStudents)
+
+//################# Con el middelwares ##########
+router.get('/all-studentss',isAuth, getAllStudents)
+
 router.get('/students', getStudent)
 router.get('/search-students/:name', searchStudent)
 router.get('/student/:id', getOneStudent)
