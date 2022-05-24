@@ -2,8 +2,8 @@ import { Sequelize } from "sequelize";
 
 
 
-const db = new Sequelize(process.env.DB_DATABASE || 'jqkuxc5h95dn7dkc', process.env.DB_USER || 'x3wcuaof7qkdm3xl', process.env.DB_PASSWORD || 'hdkwycrjmv9n43nh',{
-    host: process.env.DB_HOST || 'cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+const db = new Sequelize(process.env.DB_DATABASE || 'heroku_e691640e5c518b5', process.env.DB_USER || 'b1403ff4a9ad39', process.env.DB_PASSWORD || 'a031feee',{
+    host: process.env.DB_HOST || 'us-cdbr-east-05.cleardb.net',
     dialect: 'mysql',
 
 })
