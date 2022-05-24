@@ -20,6 +20,8 @@ import { isAuth } from "../middelwares/auth.js";
 import { loginP } from "../controllers/PruebaLogin.js";
 
 
+import {getUserMentor} from "../controllers/UserMentorsController.js"
+
 const router = express.Router();
 
 //########## Login sin JWT y datos por el headers ###########
@@ -104,8 +106,10 @@ router.post('/users', createUsers) //funciona
 router.put('/users/:id', updateUsers) //funciona
 router.delete('/users/:id', deleteUsers) //funciona
 
-router.get('/user/student', getUserStudent) //funciona
+router.get('/user/student', getUserStudent) //funcionaa
 router.post('/create/userStudent', createUserStudent) //funciona
 router.delete('/delete/userStudent', deleteAllUserStudent) //funciona
+
+router.get('user/mentor',getUserMentor)
 
 export default router

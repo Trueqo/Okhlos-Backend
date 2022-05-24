@@ -1,9 +1,9 @@
 import db from '../db/db.js';
 
-export const getUserStudent = async (req,res) => {
+export const getUserMentor = async (req,res) => {
     try {
-        const result = await db.query(`SELECT Estudiantes.id, users.email, Estudiantes.name, Estudiantes.cohort, Estudiantes.age, Estudiantes.phone, Estudiantes.status, Estudiantes.gender, programs.name as programa FROM Estudiantes, users, programs WHERE Estudiantes.id_user = users.id and Estudiantes.id_program = programs.id ORDER BY Estudiantes.name;`)
-        res.json(result[0]);
+        const result = await db.query(`SELECT mentors.name, mentors.email, mentors.age, mentors.phone, studies.title, Businesses.name, Cargos.name FROM mentors, Businesses, studies, Cargos WHERE studies.id = mentors.id_studies and Businesses.id = mentors.id_bussiness and Cargos.id = mentors.id_cargo;`)
+        res.json(result);
     } catch (error) {
         res.json({ message: error.message });
     }
