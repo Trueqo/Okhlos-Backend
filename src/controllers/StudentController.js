@@ -40,7 +40,7 @@ export const getMaxCohort = async (req, res) => {
 	try {
 		const [ result, metadata ] = await db.query(`
       SELECT max(cohort)
-      FROM students
+      FROM estudiantes
     `);
 		res.json(result)
 	} catch (error) {
