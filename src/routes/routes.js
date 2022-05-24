@@ -15,6 +15,8 @@ import { checkLogin } from "../controllers/LoginController.js";
 import { createUserStudent, deleteAllUserStudent, getUserStudent } from "../controllers/userStudentsController.js";
 // import { getMatch, getMatchCohort, updateMatch, calculateMatch, updateMatchAutomatic, createMatch } from "../controllers/MatchController.js";
 
+import {getUserMentor} from "../controllers/UserMentorsController.js"
+
 const router = express.Router();
 
 router.get('/login/:email/:password', checkLogin)
@@ -95,8 +97,10 @@ router.post('/users', createUsers) //funciona
 router.put('/users/:id', updateUsers) //funciona
 router.delete('/users/:id', deleteUsers) //funciona
 
-router.get('/user/student', getUserStudent) //funciona
+router.get('/user/student', getUserStudent) //funcionaa
 router.post('/create/userStudent', createUserStudent) //funciona
 router.delete('/delete/userStudent', deleteAllUserStudent) //funciona
+
+router.get('user/mentor',getUserMentor)
 
 export default router
