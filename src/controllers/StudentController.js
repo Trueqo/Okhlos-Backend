@@ -6,28 +6,21 @@ const op = Sequelize.Op;
 export const getStudent = async (req, res) => {
 	try {
 		const [result, metadata] = await db.query(`
-			SELECT students.id, students.name, students.last_name, students.birth_date,
-				students.gender, students.phone, users.email, interests.name as interest, programs.name as program,
-				mentors.name as mentor, students.active
-			FROM 
-				students, 
-				students_interests,
-				interests, 
-				programs, 
-				users, 
-				students_users,
-				sessions,
-				mentors
-			WHERE
-				students.id = students_interests.id_students_fk and
-				students.id = students_users.id_students_fk and
-				students.id_programs_fk = programs.id and
-				interests.id = students_interests.id_interests_fk and
-				users.id = students_users.id_users_fk and
-				students.id = sessions.id_students_fk and
-				mentors.id = sessions.id_mentors_fk
-			GROUP BY
-				students_interests.id_students_fk, sessions.id_students_fk
+		SELECT 
+			users.email, estudiantes.name, estudiantes.cohort, estudiantes.age, estudiantes.phone, estudiantes.status,estudiantes.gender, programs.name as programa,
+			interests.name as interests, estudiante_interest.nivel
+		
+		FROM 
+			estudiantes, users, programs, interests, estudiante_interest
+		
+		WHERE 
+			estudiantes.id_user = users.id 
+				and 
+					estudiantes.id_program = programs.id 
+				and 
+					estudiante_interest.id_estudiante = estudiantes.id 
+				and 
+					estudiante_interest.id_interest = interests.id;
 		`);
 		res.json(result)
 	} catch (error) {
@@ -47,7 +40,7 @@ export const getMaxCohort = async (req, res) => {
 	try {
 		const [ result, metadata ] = await db.query(`
       SELECT max(cohort)
-      FROM students
+      FROM estudiantes
     `);
 		res.json(result)
 	} catch (error) {
@@ -106,7 +99,7 @@ export const deleteStudent = async (req, res) => {
 export const searchStudent = async (req, res) => {
 
 	try {
-		const student = await db.query('SELECT * FROM students WHERE name LIKE "%' + req.params.name + '%"')
+		const student = await db.query('SELECT * FROM estudiantes WHERE name LIKE "%' + req.params.name + '%"')
 		res.json(student);
 	}  catch (error) {
 		res.json({ message: error.message })
@@ -155,23 +148,39 @@ export const getStudentAge = async (id) => {
 	}
 };
 
+
+// Personas sin mentor
+
 export const getStudentsAvailable = async (req, res) => {
 	try {
 		const [result, metadata] = await db.query(`
-		SELECT students.id as id_student, students.name, students.last_name, students.birth_date
-		FROM 
-			students
-		WHERE
-			students.id not in (
-				SELECT id_students_fk
-				FROM 
-					_matchs
-				WHERE 
-					_matchs.id_students_fk = students.id
-			)
-		ORDER BY students.id
+		SELECT estudiantes.id, estudiantes.name, estudiantes.age 
+	FROM 
+		estudiantes,matchs 
+	WHERE 
+		estudiantes.id <> matchs.id_estudiante;
 		`);
 		res.json(result);
+	} catch (error) {
+		res.json({ message: error.message });
+	}
+};
+
+// Apagar estudiante
+
+export const studentOff = async (req, res) => {
+	try {
+		await db.query(`
+		UPDATE
+			estudiantes 
+		SET 
+			estudiantes.status =NOT(estudiantes.status) 
+		WHERE estudiantes.id = ${req.params.id};
+		`)
+		
+		res.json({
+			message: '¡status actualizado correctamente!',
+		});
 	} catch (error) {
 		res.json({ message: error.message });
 	}

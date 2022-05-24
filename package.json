@@ -1,26 +1,24 @@
 {
-  "name": "okhlos-backend",
+  "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "node index.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Trueqo/Okhlos-Backend.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Trueqo/Okhlos-Backend/issues"
-  },
-  "homepage": "https://github.com/Trueqo/Okhlos-Backend#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.3",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.19.0"
+    "sequelize": "^6.17.0"
   }
 }
